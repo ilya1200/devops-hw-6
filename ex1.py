@@ -2,6 +2,7 @@ import os
 
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 
 CHROME_DRIVER = "/home/ilya/PycharmProjects/devops-hw-6/chromedriver"
@@ -10,6 +11,10 @@ FIREFOX_DRIVER = "/usr/bin/geckodriver"
 urls: dict = {
     "walla": "http://www.walla.co.il",
     "ynet": "http://ynet.co.il"
+}
+
+locators = {
+    "walla_title": (By.LINK_TEXT, 'http://www.walla.co.il')
 }
 
 
@@ -34,7 +39,7 @@ def firefox_driver() -> WebDriver:
     return firefox_options
 
 
-def task_1_3():
+def task_1():
     chrome: WebDriver = chrome_driver()
     chrome.get(urls['walla'])
     print('Page title: ', chrome.title)
@@ -46,4 +51,12 @@ def task_1_3():
     firefox.quit()
 
 
-task_1_3()
+def task_2():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['walla'])
+    title = chrome.title
+    page_title = chrome.find_element(*locators['walla_title'])
+    assert title == page_title
+
+
+task_2()
