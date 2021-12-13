@@ -14,7 +14,7 @@ urls: dict = {
 
 
 def chrome_driver() -> WebDriver:
-    print("Using Chrom...")
+    print("Using Chrome...")
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("no-sandbox")
     chrome_options.add_argument("--disable-extensions")
