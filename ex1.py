@@ -14,7 +14,7 @@ urls: dict = {
 }
 
 locators = {
-    "walla_title": (By.LINK_TEXT, 'http://www.walla.co.il')
+    "walla_title": (By.CSS_SELECTOR, '[title="וואלה! NEWS"]')
 }
 
 
@@ -45,7 +45,7 @@ def task_1():
     print('Page title: ', chrome.title)
     chrome.quit()
 
-    firefox:  WebDriver = firefox_driver()
+    firefox: WebDriver = firefox_driver()
     firefox.get(urls['ynet'])
     print('Page title: ', firefox.title)
     firefox.quit()
@@ -54,9 +54,9 @@ def task_1():
 def task_2():
     chrome: WebDriver = chrome_driver()
     chrome.get(urls['walla'])
-    title = chrome.title
+    title = "וואלה! NEWS"
     page_title = chrome.find_element(*locators['walla_title'])
-    assert title == page_title
+    assert title == page_title.get_attribute('title')
 
 
 task_2()
