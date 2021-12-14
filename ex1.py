@@ -109,8 +109,20 @@ def task_5():
     search_btn.click()
     chrome.quit()
 
+def task_6():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['youtube'])
+    print('Page title: ', chrome.title)
+
+    textArea = self.driverChrome.find_element(locators["google_translate_source"])
+    textArea2 = self.driverChrome.find_element(locators["google_translate_source_2"])
+    textArea3 = self.driverChrome.find_element(locators["google_translate_source_3"])
+    print(textArea)
+    print(textArea2)
+    print(textArea3)
 
 task_1()
 task_2()
 task_3()
 task_4()
+task_5()
