@@ -13,12 +13,15 @@ FIREFOX_DRIVER = "/usr/bin/geckodriver"
 urls: dict = {
     "walla": "http://www.walla.co.il",
     "ynet": "http://ynet.co.il",
-    "google_translate": "https://translate.google.com/"
+    "google_translate": "https://translate.google.com/",
+    "youtube": "https://www.youtube.com/",
 }
 
 locators = {
     "walla_title": (By.CSS_SELECTOR, '[title="וואלה! NEWS"]'),
     "google_translate_source": (By.CSS_SELECTOR, "textarea[aria-label='Source text']"),
+    "youtube_searchbar": (By.CSS_SELECTOR, "input[id='search']"),
+    "youtube_searchbar_btn": (By.ID, 'search-icon-legacy')
 }
 
 
@@ -92,6 +95,18 @@ def task_4():
 
     source_text_element: WebElement = chrome.find_element(locators["google_translate_source"])
     source_text_element.send_keys("תפוח")
+    chrome.quit()
+
+
+def task_5():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['youtube'])
+    print('Page title: ', chrome.title)
+
+    search_bar: WebElement = chrome.find_element(locators["youtube_searchbar"])
+    search_bar.send_keys("Cats videos")
+    search_btn: WebElement = chrome.find_element(locators["youtube_searchbar_btn"])
+    search_btn.click()
     chrome.quit()
 
 
