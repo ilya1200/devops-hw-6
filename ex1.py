@@ -1,6 +1,7 @@
 import os
 
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
@@ -54,9 +55,33 @@ def task_1():
 def task_2():
     chrome: WebDriver = chrome_driver()
     chrome.get(urls['walla'])
-    title = "וואלה! NEWS"
-    page_title = chrome.find_element(*locators['walla_title'])
-    assert title == page_title.get_attribute('title')
+
+    try:
+        title = "וואלה! NEWS"
+        page_title = chrome.find_element(*locators['walla_title'])
+        assert title == page_title.get_attribute('title')
+    except (AssertionError, NoSuchElementException) as e:
+        raise e
+    finally:
+        chrome.quit()
 
 
+def task_3():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['walla'])
+    print('Page title: ', chrome.title)
+    chrome_page_title = chrome.find_element(*locators['walla_title']).get_attribute('title')
+    chrome.quit()
+
+    firefox: WebDriver = firefox_driver()
+    firefox.get(urls['ynet'])
+    print('Page title: ', firefox.title)
+    firefox_page_title = chrome.find_element(*locators['walla_title']).get_attribute('title')
+    firefox.quit()
+
+    assert firefox_page_title == chrome_page_title
+
+
+task_1()
 task_2()
+task_3()
