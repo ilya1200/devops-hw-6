@@ -2,7 +2,7 @@ import os
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
@@ -159,6 +159,7 @@ def task_8():
     chrome.delete_all_cookies()
     cookies: set = chrome.get_cookies()
     print(cookies)
+    chrome.quit()
 
 
 def task_9():
@@ -168,6 +169,7 @@ def task_9():
 
     github_search = chrome.find_element(locators['github_search'])
     github_search.send_keys("selenium", Keys.RETURN)
+    chrome.quit()
 
 
 task_1()
