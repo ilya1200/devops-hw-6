@@ -2,6 +2,7 @@ import os
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import Keys
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
@@ -15,6 +16,8 @@ urls: dict = {
     "ynet": "http://ynet.co.il",
     "google_translate": "https://translate.google.com/",
     "youtube": "https://www.youtube.com/",
+    "facebook": "https://www.facebook.com/",
+    "github": "https://github.com/"
 }
 
 locators = {
@@ -44,6 +47,7 @@ def chrome_driver() -> WebDriver:
 def firefox_driver() -> WebDriver:
     print("Using Firefox...")
     firefox_options = Options()
+    firefox_options.add_argument("--disable-extensions")
     firefox_options.add_argument("--headless")
     os.chmod(CHROME_DRIVER, 0o755)
     firefox_driver: WebDriver = webdriver.Firefox(options=firefox_options, executable_path=FIREFOX_DRIVER)
@@ -155,6 +159,15 @@ def task_8():
     chrome.delete_all_cookies()
     cookies: set = chrome.get_cookies()
     print(cookies)
+
+
+def task_9():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['github'])
+    print('Page title: ', chrome.title)
+
+    github_search = chrome.find_element(locators['github_search'])
+    github_search.send_keys("selenium", Keys.RETURN)
 
 
 task_1()
