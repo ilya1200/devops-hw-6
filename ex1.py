@@ -89,7 +89,7 @@ def task_3():
     chrome.quit()
 
     firefox: WebDriver = firefox_driver()
-    firefox.get(urls['ynet'])
+    firefox.get(urls['walla'])
     print('Page title: ', firefox.title)
     firefox_page_title = chrome.find_element(*locators['walla_title']).get_attribute('title')
     firefox.quit()
