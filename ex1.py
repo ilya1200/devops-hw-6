@@ -20,6 +20,8 @@ urls: dict = {
 locators = {
     "walla_title": (By.CSS_SELECTOR, '[title="וואלה! NEWS"]'),
     "google_translate_source": (By.CSS_SELECTOR, "textarea[aria-label='Source text']"),
+    "google_translate_source_2": (By.CLASS_NAME, "er8xn"),
+    "google_translate_source_3": (By.CSS_SELECTOR, "textarea.er8xn"),
     "youtube_searchbar": (By.CSS_SELECTOR, "input[id='search']"),
     "youtube_searchbar_btn": (By.ID, 'search-icon-legacy'),
     "facebook_login": (By.ID, 'email'),
