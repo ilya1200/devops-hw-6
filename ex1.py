@@ -21,7 +21,10 @@ locators = {
     "walla_title": (By.CSS_SELECTOR, '[title="וואלה! NEWS"]'),
     "google_translate_source": (By.CSS_SELECTOR, "textarea[aria-label='Source text']"),
     "youtube_searchbar": (By.CSS_SELECTOR, "input[id='search']"),
-    "youtube_searchbar_btn": (By.ID, 'search-icon-legacy')
+    "youtube_searchbar_btn": (By.ID, 'search-icon-legacy'),
+    "facebook_login": (By.ID, 'email'),
+    "facebook_password": (By.ID, 'pass'),
+    "facebook_login_btn": (By.NAME, 'login')
 }
 
 
@@ -109,17 +112,38 @@ def task_5():
     search_btn.click()
     chrome.quit()
 
+
 def task_6():
     chrome: WebDriver = chrome_driver()
     chrome.get(urls['youtube'])
     print('Page title: ', chrome.title)
 
-    textArea = self.driverChrome.find_element(locators["google_translate_source"])
-    textArea2 = self.driverChrome.find_element(locators["google_translate_source_2"])
-    textArea3 = self.driverChrome.find_element(locators["google_translate_source_3"])
+    textArea: WebElement = chrome.find_element(locators["google_translate_source"])
+    textArea2: WebElement = chrome.find_element(locators["google_translate_source_2"])
+    textArea3: WebElement = chrome.find_element(locators["google_translate_source_3"])
     print(textArea)
     print(textArea2)
     print(textArea3)
+    chrome.quit()
+
+
+def task_7():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['facebook'])
+    print('Page title: ', chrome.title)
+
+    user_name: str = "my_user"
+    user_password: str = "my_password"
+
+    login: WebElement = chrome.find_element(locators["facebook_login"])
+    password: WebElement = chrome.find_element(locators["facebook_password"])
+    login_btn: WebElement = chrome.find_element(locators["facebook_login_btn"])
+
+    login.send_keys(user_name)
+    password.send_keys(user_password)
+    login_btn.click()
+    chrome.quit()
+
 
 task_1()
 task_2()
