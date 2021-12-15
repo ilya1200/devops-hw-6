@@ -147,8 +147,21 @@ def task_7():
     chrome.quit()
 
 
+def task_8():
+    chrome: WebDriver = chrome_driver()
+    chrome.get(urls['facebook'])
+    print('Page title: ', chrome.title)
+
+    chrome.delete_all_cookies()
+    cookies: set = chrome.get_cookies()
+    print(cookies)
+
+
 task_1()
 task_2()
 task_3()
 task_4()
 task_5()
+task_6()
+task_7()
+task_8()
