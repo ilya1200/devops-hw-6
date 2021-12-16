@@ -91,7 +91,7 @@ def task_3():
     firefox: WebDriver = firefox_driver()
     firefox.get(urls['walla'])
     print('Page title: ', firefox.title)
-    firefox_page_title = chrome.find_element(*locators['walla_title']).get_attribute('title')
+    firefox_page_title = firefox.find_element(*locators['walla_title']).get_attribute('title')
     firefox.quit()
 
     assert firefox_page_title == chrome_page_title
@@ -172,12 +172,12 @@ def task_9():
     chrome.quit()
 
 
-task_1()
-task_2()
+# task_1()
+# task_2()
 task_3()
-task_4()
-task_5()
-task_6()
-task_7()
-task_8()
-task_9()
+# task_4()
+# task_5()
+# task_6()
+# task_7()
+# task_8()
+# task_9()
