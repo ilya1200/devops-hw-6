@@ -123,7 +123,7 @@ def task_5():
 
 def task_6():
     chrome: WebDriver = chrome_driver()
-    chrome.get(urls['youtube'])
+    chrome.get(urls['google_translate'])
     print('Page title: ', chrome.title)
 
     textArea: WebElement = chrome.find_element(*locators["google_translate_source"])
@@ -177,9 +177,9 @@ def task_9():
 # task_1()
 # task_2()
 # task_3()
-task_4()
+# task_4()
 # task_5()
-# task_6()
+task_6()
 # task_7()
 # task_8()
 # task_9()
