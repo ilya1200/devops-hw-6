@@ -8,8 +8,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.remote.webelement import WebElement
 
-CHROME_DRIVER = "/home/ilya/PycharmProjects/devops-hw-6/chromedriver"
-FIREFOX_DRIVER = "/usr/bin/geckodriver"
+CHROME_DRIVER: str = "/home/ilya/PycharmProjects/devops-hw-6/chromedriver"
+FIREFOX_DRIVER: str = "/usr/bin/geckodriver"
+TIME_TO_WAIT: int = 20
 
 urls: dict = {
     "walla": "http://www.walla.co.il",
@@ -41,6 +42,7 @@ def chrome_driver() -> WebDriver:
     chrome_options.add_argument("--headless")
     os.chmod(CHROME_DRIVER, 0o755)
     chrome_driver: WebDriver = webdriver.Chrome(chrome_options=chrome_options, executable_path=CHROME_DRIVER)
+    chrome_driver.implicitly_wait(TIME_TO_WAIT)
     return chrome_driver
 
 
@@ -51,7 +53,7 @@ def firefox_driver() -> WebDriver:
     firefox_options.add_argument("--headless")
     os.chmod(CHROME_DRIVER, 0o755)
     firefox_driver: WebDriver = webdriver.Firefox(options=firefox_options, executable_path=FIREFOX_DRIVER)
-
+    firefox_driver.implicitly_wait(TIME_TO_WAIT)
     return firefox_driver
 
 
