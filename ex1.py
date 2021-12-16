@@ -104,7 +104,7 @@ def task_4():
     chrome.get(urls['google_translate'])
     print('Page title: ', chrome.title)
 
-    source_text_element: WebElement = chrome.find_element(locators["google_translate_source"])
+    source_text_element: WebElement = chrome.find_element(*locators["google_translate_source"])
     source_text_element.send_keys("תפוח")
     chrome.quit()
 
@@ -114,9 +114,9 @@ def task_5():
     chrome.get(urls['youtube'])
     print('Page title: ', chrome.title)
 
-    search_bar: WebElement = chrome.find_element(locators["youtube_searchbar"])
+    search_bar: WebElement = chrome.find_element(*locators["youtube_searchbar"])
     search_bar.send_keys("Cats videos")
-    search_btn: WebElement = chrome.find_element(locators["youtube_searchbar_btn"])
+    search_btn: WebElement = chrome.find_element(*locators["youtube_searchbar_btn"])
     search_btn.click()
     chrome.quit()
 
@@ -126,9 +126,9 @@ def task_6():
     chrome.get(urls['youtube'])
     print('Page title: ', chrome.title)
 
-    textArea: WebElement = chrome.find_element(locators["google_translate_source"])
-    textArea2: WebElement = chrome.find_element(locators["google_translate_source_2"])
-    textArea3: WebElement = chrome.find_element(locators["google_translate_source_3"])
+    textArea: WebElement = chrome.find_element(*locators["google_translate_source"])
+    textArea2: WebElement = chrome.find_element(*locators["google_translate_source_2"])
+    textArea3: WebElement = chrome.find_element(*locators["google_translate_source_3"])
     print(textArea)
     print(textArea2)
     print(textArea3)
@@ -143,9 +143,9 @@ def task_7():
     user_name: str = "my_user"
     user_password: str = "my_password"
 
-    login: WebElement = chrome.find_element(locators["facebook_login"])
-    password: WebElement = chrome.find_element(locators["facebook_password"])
-    login_btn: WebElement = chrome.find_element(locators["facebook_login_btn"])
+    login: WebElement = chrome.find_element(*locators["facebook_login"])
+    password: WebElement = chrome.find_element(*locators["facebook_password"])
+    login_btn: WebElement = chrome.find_element(*locators["facebook_login_btn"])
 
     login.send_keys(user_name)
     password.send_keys(user_password)
@@ -169,15 +169,15 @@ def task_9():
     chrome.get(urls['github'])
     print('Page title: ', chrome.title)
 
-    github_search = chrome.find_element(locators['github_search'])
+    github_search = chrome.find_element(*locators['github_search'])
     github_search.send_keys("selenium", Keys.RETURN)
     chrome.quit()
 
 
 # task_1()
 # task_2()
-task_3()
-# task_4()
+# task_3()
+task_4()
 # task_5()
 # task_6()
 # task_7()
